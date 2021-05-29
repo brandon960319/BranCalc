@@ -1,0 +1,131 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Brandons Basic Calculator" Height="450" Width="600" MaxHeight="450" MaxWidth="600" ResizeMode="NoResize">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="7" Background="LightGray">
+                    <TextBlock Name="txtCalc" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Text="" HorizontalAlignment="Stretch" TextAlignment="Right" FontSize="30"/>
+                </DockPanel>
+                <DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="7" Background="LightSlateGray">
+                    <TextBlock Name="txtResultDesc" Width="100" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="Result:" HorizontalAlignment="Stretch" FontSize="15" />
+                    <TextBlock Name="txtResult" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="" HorizontalAlignment="Stretch" FontSize="15" />
+                </DockPanel>
+                <DockPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="7" Background="Gray">
+                    <TextBlock Name="txtMemoryDescription" Width="100" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="Memory:" HorizontalAlignment="Stretch" FontSize="15" />
+                    <TextBlock Name="txtMemoryValn" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="" HorizontalAlignment="Stretch" FontSize="15" />
+                </DockPanel>
+            </Grid>            
+        </Border>
+
+
+        <Border  Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="1" BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="7" Background="LightSlateGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="MemoryClear"    Grid.Row="1" Grid.Column="0" Click="MemoryFunctions" IsEnabled="True" Background="LightBlue" HorizontalAlignment="Stretch" Tag="1" Content="MC"/>
+                    <Button Name="MemoryRecall"   Grid.Row="1" Grid.Column="1" Click="MemoryFunctions" IsEnabled="True" Background="LightBlue" Tag="2">MR</Button>
+                    <Button Name="MemorySave"     Grid.Row="1" Grid.Column="2" Click="MemoryFunctions" IsEnabled="True" Background="LightBlue" Tag="5">MS</Button>
+                    <Button Name="MemoryAdd"      Grid.Row="1" Grid.Column="3" Click="MemoryFunctions" IsEnabled="True" Background="LightBlue" Tag="3">M+</Button>
+                    <Button Name="MemorySubtract" Grid.Row="1" Grid.Column="4" Click="MemoryFunctions" IsEnabled="True" Background="LightBlue" Tag="4">M-</Button>
+                </Grid>
+            </Grid>
+        </Border>
+
+        
+
+        <Button Name="btnDivision" Grid.Column="0" Grid.Row="3" Click="SplitToFloat" IsEnabled="False" Background="#FF9678E6">/</Button>
+        <Button Name="btnMultiplication" Grid.Column="1" Grid.Row="3" Click="SplitToFloat" IsEnabled="False" Background="#FF9678E6">*</Button>
+        <Button Name="btnSubtraction" Grid.Column="2" Grid.Row="3" Click="SplitToFloat" IsEnabled="False" Background="#FF9678E6">-</Button>
+        <Button Name="btnAddition" Grid.Column="3" Grid.Row="3" Click="SplitToFloat" IsEnabled="False" Background="#FF9678E6">+</Button>
+
+        <Button Name="btn7" Grid.Column="0" Grid.Row="4" Click="AddToAbove" Background="#FFB1DFE6">7</Button>
+        <Button Name="btn8" Grid.Column="1" Grid.Row="4" Click="AddToAbove" Background="#FFB1DFE6">8</Button>
+        <Button Name="btn9" Grid.Column="2" Grid.Row="4" Click="AddToAbove" Background="#FFB1DFE6">9</Button>
+
+        <Button Name="btn4" Grid.Column="0" Grid.Row="5" Click="AddToAbove" Background="#FFB1DFE6">4</Button>
+        <Button Name="btn5" Grid.Column="1" Grid.Row="5" Click="AddToAbove" Background="#FFB1DFE6">5</Button>
+        <Button Name="btn6" Grid.Column="2" Grid.Row="5" Click="AddToAbove" Background="#FFB1DFE6">6</Button>
+
+        <Button Name="btn1" Grid.Column="0" Grid.Row="6" Click="AddToAbove" Background="#FFB1DFE6">1</Button>
+        <Button Name="btn2" Grid.Column="1" Grid.Row="6" Click="AddToAbove" Background="#FFB1DFE6">2</Button>
+        <Button Name="btn3" Grid.Column="2" Grid.Row="6" Click="AddToAbove" Background="#FFB1DFE6">3</Button>
+
+        <Button Name="btn0" Grid.Column="1" Grid.Row="7" Click="AddToAbove" Background="#FFB1DFE6">0</Button>
+        <Button Name="btnDot" Grid.Column="2" Grid.Row="7" Click="AddToAbove" Background="#FF99F7D9">.</Button>
+        
+        <Button Name="btnClear" Grid.Column="0" Grid.Row="7" Click="ClearCalc_Click" Background="#FFECE5A5">C</Button>
+        <Button Name="btnCalculation" Grid.Column="3" Grid.Row="4" Grid.RowSpan="4" Click="CalcValue" IsEnabled="False" Background="#FFB9F98D">=</Button>
+
+        <Border  Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="8" BorderBrush="Black" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="25" HorizontalAlignment="Stretch" TextAlignment="Center" VerticalAlignment="Center">History</TextBlock>
+                <ListView Name="histListView" Grid.Row="1" Grid.Column="0" FontSize="15"/>
+                <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Clear History" Margin="10,0,0,10" Click="Button_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
